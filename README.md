@@ -12,7 +12,7 @@ This work is a combination of three master's thesis projects. Please check out o
 - [x] Sinian Li (Keyframe Extraction): http://resolver.tudelft.nl/uuid:d16300c5-6988-4172-8c20-0e2dfff8949f
 - [x] Doruk Barokas Profeta (Feature Extraction):
 
-## Features
+**Features**
 
 - Efficient keyframe extraction from videos.
 - Feature extraction using compact deep learning networks (MobileNetV2).
