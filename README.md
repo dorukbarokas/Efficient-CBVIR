@@ -4,10 +4,9 @@ Efficient Content-Based Image Retrieval from Videos using Compact Deep Learning 
 
 We have designed and implemented a video image-based query search engine that strikes a good balance between efficiency and accuracy. Users can submit any video for the gallery and any image they want to search for, and the engine will return similar frames in an input video database. The main components of the system are shown in the following diagram:
 
-![pipeline](https://github.com/dorukbarokas/Efficient-CBVIR/blob/main/Picture3.png)
-![pipeline2](https://github.com/dorukbarokas/Efficient-CBVIR/blob/main/Picture4.png)
 
-<img src="https://github.com/dorukbarokas/Efficient-CBVIR/blob/main/Picture3.png" width="48">
+<img src="https://github.com/dorukbarokas/Efficient-CBVIR/blob/main/Picture3.png" width="520">
+<img src="https://github.com/dorukbarokas/Efficient-CBVIR/blob/main/Picture4.png" width="520">
 
 This work is a combination of three master's thesis projects. Please check out our theses via the following links:
 - [x] Sinian Li (Keyframe Extraction): http://resolver.tudelft.nl/uuid:d16300c5-6988-4172-8c20-0e2dfff8949f
