@@ -21,7 +21,7 @@ This work is a combination of three master's thesis projects. Please check out o
 
 **Installation Guideline:**
 
-To run the system, first clone the repository. To install the correct packages, change the directory to the folder that contains the environment.yml file, build the environment and install packages by using the following command:
+To run the system, first clone the repository. To install the correct packages, change the directory to the folder that contains the environment.yml file, build the environment, and install packages by using the following command:
 
 ```
 conda env create -f environment.yml
