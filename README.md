@@ -17,7 +17,7 @@ This work is a combination of three master's thesis projects. Please check out o
 - Efficient keyframe extraction from videos.
 - Feature extraction using compact deep learning networks (MobileNetV2).
 - Integration of approximate nearest-neighbor search (ANNOY) methods for rapid retrieval.
-- Re-ranking module to enhance retrieval accuracy.
+- Re-ranking module to enhance retrieval accuracy. (ResNet101 + SOLAR)
 
 **Installation Guideline:**
 
