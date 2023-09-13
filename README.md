@@ -10,7 +10,7 @@ We have designed and implemented a video image-based query search engine that st
 
 This work is a combination of three master's thesis projects. Please check out our theses via the following links:
 - [x] Sinian Li (Keyframe Extraction): http://resolver.tudelft.nl/uuid:d16300c5-6988-4172-8c20-0e2dfff8949f
-- [x] Doruk Barokas Profeta (Feature Extraction):
+- [x] Doruk Barokas Profeta (Feature Extraction): http://resolver.tudelft.nl/uuid:751092b8-1b3d-4335-98bd-cc26e69d374c
 
 **Features**
 
