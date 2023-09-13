@@ -81,7 +81,8 @@ def extract_features(input_images):
         return None
 
 def online(input_images, folder_name):
-    input_images = glob.glob(r"/space/dbarokasprofet/Rel_Hist/all_query/video_*.jpg")
+    # input_images = glob.glob(r"/space/dbarokasprofet/Rel_Hist/all_query/video_*.jpg")
+    input_images = glob.glob(r"/space/dbarokasprofet/Rel_Hist/all_query/video_0_1_2.jpg")
     # input_images = glob.glob(r"/space/dbarokasprofet/Oxford5k/Oxford_Query/*.jpg")
     # input_images = glob.glob(r"/space/dbarokasprofet/Paris6k/query/*.jpg")
 
@@ -106,8 +107,13 @@ def online(input_images, folder_name):
     query_images = query_images.to("cuda").contiguous()
     query_features = model(query_images)
     query_features = F.avg_pool2d(query_features, kernel_size=query_features.size()[2:])
-    query_features = query_features.squeeze()
-    query_features = query_features.to("cpu").detach().numpy()
+    
+    if len(query_images) != 1:
+        query_features = query_features.squeeze()
+        query_features = query_features.to("cpu").detach().numpy()
+    else:
+        query_features = query_features.to("cpu").detach().numpy()
+        query_features = query_features.reshape(1, -1)
 
     # Load the JSON file
     json_file_path = f"{folder_name}_features.json"
@@ -122,6 +128,8 @@ def online(input_images, folder_name):
     # Extract the folder name from the input_videos path
     folder_name = os.path.basename(os.path.dirname(input_videos[0]))
 
+    # print("shape:", query_features.shape)
+
 
     idx, dist, _ = nns(frame_features_list, query_features, folder_name, 'annoy', build = False)
     num_query_images = len(input_images)
@@ -130,7 +138,7 @@ def online(input_images, folder_name):
     
     threshold_value = num_query_images * keyframes_size / scaling_factor
     # threshold = np.percentile(dist[0], threshold_value * 100)
-    threshold = 0.65
+    threshold = 0.82
 
     # Process any remaining images in the last batch
     # if query_features is not None:
@@ -143,7 +151,7 @@ def online(input_images, folder_name):
     for i, distances in enumerate(dist):
         filtered_indices.append([idx[i][j] for j, d in enumerate(distances) if d < threshold])
     filtered_indices = list(set([idx for sublist in filtered_indices for idx in sublist]))
-    print( "Filtered_ind" , filtered_indices)
+    # print( "Filtered_ind" , filtered_indices)
     filtered_videos = [input_videos[i] for i in filtered_indices]
     top_k = 10
 
@@ -222,8 +230,8 @@ def online(input_images, folder_name):
 
     num_batches = (len(real_zero_indices) + batch_size - 1) // batch_size
 
-    print("Zero:", real_zero_indices)
-    print("Stores:", real_stored_indices)
+    # print("Zero:", real_zero_indices)
+    # print("Stores:", real_stored_indices)
 
 
     if zero_vector_indices:
@@ -257,7 +265,7 @@ def online(input_images, folder_name):
 
         # Concatenate all batches of frame features into a single array
         frame_features_list_SOLAR = np.concatenate(frame_features_list_SOLAR, axis=0)
-        print("Shape of frame_features_list:", frame_features_list_SOLAR.shape)
+        # print("Shape of frame_features_list:", frame_features_list_SOLAR.shape)
         # print("Size of frame_features_list:", frame_features_list_SOLAR.size)
 
     for i in stored_indices:
